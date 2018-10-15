@@ -1,0 +1,25 @@
+{
+  "name": "itrw322-nodeudp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PidO1/itrw-322-TCP-UDP-.git"
+  },
+  "keywords": [
+    "UDP"
+  ],
+  "author": "Pieter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PidO1/itrw-322-TCP-UDP-/issues"
+  },
+  "homepage": "https://github.com/PidO1/itrw-322-TCP-UDP-#readme",
+  "dependencies": {
+    "dgram": "^1.0.1"
+  }
+}
