@@ -1,11 +1,11 @@
 var net = require('net');
 var socket = new net.Socket();
-socket.connect(5000, "127.0.0.1");
+socket.connect(5643, "192.168.1.7");
 var fs = require('fs');
 var path = require('path');
 
 var packets = 0;
-var buffer = new Buffer(0);
+var buffer = Buffer.alloc(0);
 socket.on('data', function(chunk){
   packets++;
   console.log(chunk);
