@@ -3,6 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var fileName = "test.png";
 var filePath = path.join(__dirname, fileName);
+var d = new Date();
+var n ;
 
 var server = net.createServer(function(client){
   var packages = 0;
@@ -34,14 +36,17 @@ var server = net.createServer(function(client){
 
   client.on('close', function(){
     console.log("termination from client");
+    var na = d.getMilliseconds();
+  console.log(na);
   });
-
+  
 });
 
-server.listen(5643);
+server.listen(5644);
 
 server.on('listening', function(){
   console.log("server on");
+   n = d.getMilliseconds();
 });
 server.on('error', function(err){
   console.log("error starting server");

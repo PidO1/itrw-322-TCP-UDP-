@@ -2,9 +2,9 @@ var net = require('net');
 var fs = require('fs');
 
 
-var PORT = 9001;
-var HOST = '127.0.0.1';
-var FILEPATH = 'C:/Users/User/Desktop/test/x.jpg';
+var PORT = 5644;
+var HOST = '192.168.1.2';
+var FILEPATH = 'C:/Users/piete/Desktop/itrw-322-TCP-UDP-/itrw322-nodeTCP/x.jpg';
 
 var client = new net.Socket()
 

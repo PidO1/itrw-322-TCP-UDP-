@@ -4,9 +4,9 @@ import java.net.*;
 public class Client {
     private DatagramSocket socket = null;
     private FileEvent event = null;
-    private String sourceFilePath = "C:/Users/User/Desktop/test/x.jpg";
+    private String sourceFilePath = "C:/Users/piete/Desktop/itrw-322-TCP-UDP-/itrw-322-javaUDP/test.png";
     private String destinationPath = "C:/Users/EA/Desktop/EA/UTC,TCP repo/itrw-322-TCP-UDP-/itrw-322-javaUDP/test.png";
-    private String hostName = "localHost";
+    private String hostName = "192.168.1.2";
 
     public Client() {
 
@@ -14,24 +14,31 @@ public class Client {
 
     public void createConnection() {
         try {
-
+            
+           
             socket = new DatagramSocket();
             InetAddress IPAddress = InetAddress.getByName(hostName);
             byte[] incomingData = new byte[1024];
             event = getFileEvent();
+             long startTime = System.currentTimeMillis();
+            long elapsedTime;
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ObjectOutputStream os = new ObjectOutputStream(outputStream);
             os.writeObject(event);
             byte[] data = outputStream.toByteArray();
-            DatagramPacket sendPacket = new DatagramPacket(data, data.length, IPAddress, 9876);
+            DatagramPacket sendPacket = new DatagramPacket(data, data.length, IPAddress, 5644);
             socket.send(sendPacket);
             System.out.println("File sent from client");
             DatagramPacket incomingPacket = new DatagramPacket(incomingData, incomingData.length);
             socket.receive(incomingPacket);
             String response = new String(incomingPacket.getData());
+            elapsedTime = System.currentTimeMillis() - startTime;
+        System.out.println(elapsedTime);
             System.out.println("Response from server:" + response);
+            
             Thread.sleep(2000);
             System.exit(0);
+            
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
