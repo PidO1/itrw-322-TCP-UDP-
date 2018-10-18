@@ -15,54 +15,7 @@ var server = net.createServer(function(client){
     while(sizeHex.length < 4){
       sizeHex = "0" + sizeHex;
     }
-    var size = new Buffer(sizeHex);var net = require('net');
-    var fs = require('fs');
-    var path = require('path');
-    var fileName = "test.png";
-    var filePath = path.join(__dirname, fileName);
-    
-    var server = net.createServer(function(client){
-      var packages = 0;
-      var totalBytes = 0;
-      var readStream = fs.createReadStream(filePath, {highWaterMark: 16384});
-      readStream.on('data', function(chunk){
-        packages++;    
-        var head = new Buffer("FILE");
-        var sizeHex = chunk.length.toString(16);
-        while(sizeHex.length < 4){
-          sizeHex = "0" + sizeHex;
-        }
-        var size = new Buffer(sizeHex);
-        console.log("size", chunk.length, "hex", sizeHex);
-        var delimiter = new Buffer("@");
-        var pack = Buffer.concat([head, size, chunk, delimiter]);
-        totalBytes += pack.length;
-        client.write(pack);
-      });
-      readStream.on('close', function(){
-        client.end();
-        console.log("total packages", packages);
-        console.log("total bytes sent", totalBytes);
-      });
-    
-      client.on('error', function(){
-        console.log("error at client");
-      });
-    
-      client.on('close', function(){
-        console.log("termination from client");
-      });
-    
-    });
-    
-    server.listen(5643);
-    
-    server.on('listening', function(){
-      console.log("server on");
-    });
-    server.on('error', function(err){
-      console.log("error starting server");
-    });
+    var size = new Buffer(sizeHex);
     console.log("size", chunk.length, "hex", sizeHex);
     var delimiter = new Buffer("@");
     var pack = Buffer.concat([head, size, chunk, delimiter]);
@@ -85,7 +38,7 @@ var server = net.createServer(function(client){
 
 });
 
-server.listen(5000);
+server.listen(5643);
 
 server.on('listening', function(){
   console.log("server on");
