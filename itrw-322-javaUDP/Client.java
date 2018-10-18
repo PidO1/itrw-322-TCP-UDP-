@@ -20,10 +20,11 @@ public class Client {
             InetAddress IPAddress = InetAddress.getByName(hostName);
             byte[] incomingData = new byte[1024];
             event = getFileEvent();
-             long startTime = System.currentTimeMillis();
-            long elapsedTime;
+            
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ObjectOutputStream os = new ObjectOutputStream(outputStream);
+            long startTime = System.currentTimeMillis();
+            long elapsedTime;
             os.writeObject(event);
             byte[] data = outputStream.toByteArray();
             DatagramPacket sendPacket = new DatagramPacket(data, data.length, IPAddress, 5644);
@@ -52,6 +53,8 @@ public class Client {
     }
 
     public FileEvent getFileEvent() {
+        long startTime = System.currentTimeMillis();
+            long elapsedTime;
         FileEvent fileEvent = new FileEvent();
         String fileName = sourceFilePath.substring(sourceFilePath.lastIndexOf("/") + 1, sourceFilePath.length());
         String path = sourceFilePath.substring(0, sourceFilePath.lastIndexOf("/") + 1);
@@ -81,6 +84,8 @@ public class Client {
             System.out.println("path specified is not pointing to a file");
             fileEvent.setStatus("Error");
         }
+        elapsedTime = System.currentTimeMillis() - startTime;
+        System.out.println(elapsedTime+" xx");
         return fileEvent;
     }
 

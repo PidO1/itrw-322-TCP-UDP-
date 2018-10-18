@@ -9,7 +9,7 @@ ServerSocket s=new ServerSocket(5643);
 Socket sr=s.accept();
 FileInputStream fr=new FileInputStream("C:/Users/piete/Desktop/itrw-322-TCP-UDP-/itrw322-javaTCP/test.png");
 /* include your file name which you want to move*/
-byte b[]=new byte[2002];
+byte b[]=new byte[100000];
 fr.read(b, 0, b.length);
 OutputStream os=sr.getOutputStream();
 os.write(b, 0, b.length);
