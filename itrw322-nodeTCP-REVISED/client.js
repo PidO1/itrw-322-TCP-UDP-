@@ -15,7 +15,7 @@ socket.on('data', function(chunk){
 socket.on('close', function(){
   console.log("total packages", packets);
 
-  var writeStream = fs.createWriteStream(path.join(__dirname, "xafter.png"));
+  var writeStream = fs.createWriteStream(path.join(__dirname, "after.png"));
   console.log("buffer size", buffer.length);
   while(buffer.length){
     var head = buffer.slice(0, 4);
