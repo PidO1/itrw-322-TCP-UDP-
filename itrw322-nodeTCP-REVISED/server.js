@@ -38,7 +38,7 @@ var server = net.createServer(function(client){
 
 });
 
-server.listen(5000);
+server.listen(5643);
 
 server.on('listening', function(){
   console.log("server on");
